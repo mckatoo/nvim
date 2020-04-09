@@ -1,0 +1,1 @@
+/home/mckatoo/.local/share/nvim/rplugin.vim

@@ -1,0 +1,40 @@
+Plug 'ryanoasis/vim-devicons',V
+Plug 'myusuf3/numbers.vim',V
+" numbering every time you go to normal mode. Author refuses to add a setting" to avoid that),V
+" Plug 'myusuf3/numbers.vim'" Nice icons in the file explorer and file type status line.,V
+" Plug 'ryanoasis/vim-devicons',V
+if using_vim    " Consoles as buffers (neovim has its own consoles as buffers),V
+Plug 'neomake/neomake',V
+Plug 'vim-scripts/YankRing.vim',V
+Plug 'mhinz/vim-signify',V
+Plug 'tpope/vim-fugitive',V
+Plug 'mattn/emmet-vim',V
+Plug 'valloric/MatchTagAlways',V
+Plug 'fisadev/vim-isort',V
+Plug 't9md/vim-choosewin',V
+Plug 'lilydjwg/colorizer',V
+Plug 'mileszs/ack.vim',V
+Plug 'jeetsukumaran/vim-indentwise',V
+Plug 'michaeljsmith/vim-indent-object',V
+Plug 'tpope/vim-surround',V
+Plug 'Townk/vim-autoclose',V
+Plug 'davidhalter/jedi-vim',V
+Plug 'Shougo/context_filetype.vim',V
+Plug 'deoplete-plugins/deoplete-jedi',V
+Plug 'roxma/vim-hug-neovim-rpc',V
+ ,v
+    Plug 'Shougo/deoplete.nvim', {'do': ':autocmd VimEnter * UpdateRemotePlugins'},V
+Plug 'fisadev/FixedTaskList.vim',V
+Plug 'junegunn/fzf.vim',V
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' },V
+ " Plugins,V
+Plug 'vim-scripts/IndexedSearch',V
+Plug 'majutsushi/tagbar',V
+Plug 'arielrossanigo/dir-configs-override.vim',V
+,V
+asdjfsd = 9999,V
+aslfkdsd = alsjfsd,V
+aflssd = lsajf,V
+IDADE = input('Qual é a sua idade?\n'),V
+set background=dark,V
+Plug 'scrooloose/nerdtree',V
