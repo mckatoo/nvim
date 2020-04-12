@@ -1,40 +1,100 @@
-Plug 'ryanoasis/vim-devicons',V
-Plug 'myusuf3/numbers.vim',V
-" numbering every time you go to normal mode. Author refuses to add a setting" to avoid that),V
-" Plug 'myusuf3/numbers.vim'" Nice icons in the file explorer and file type status line.,V
-" Plug 'ryanoasis/vim-devicons',V
-if using_vim    " Consoles as buffers (neovim has its own consoles as buffers),V
-Plug 'neomake/neomake',V
-Plug 'vim-scripts/YankRing.vim',V
-Plug 'mhinz/vim-signify',V
-Plug 'tpope/vim-fugitive',V
-Plug 'mattn/emmet-vim',V
-Plug 'valloric/MatchTagAlways',V
-Plug 'fisadev/vim-isort',V
-Plug 't9md/vim-choosewin',V
-Plug 'lilydjwg/colorizer',V
-Plug 'mileszs/ack.vim',V
-Plug 'jeetsukumaran/vim-indentwise',V
-Plug 'michaeljsmith/vim-indent-object',V
-Plug 'tpope/vim-surround',V
-Plug 'Townk/vim-autoclose',V
-Plug 'davidhalter/jedi-vim',V
-Plug 'Shougo/context_filetype.vim',V
-Plug 'deoplete-plugins/deoplete-jedi',V
-Plug 'roxma/vim-hug-neovim-rpc',V
- ,v
-    Plug 'Shougo/deoplete.nvim', {'do': ':autocmd VimEnter * UpdateRemotePlugins'},V
-Plug 'fisadev/FixedTaskList.vim',V
-Plug 'junegunn/fzf.vim',V
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' },V
+" open NERDTree automatically,V
  " Plugins,V
-Plug 'vim-scripts/IndexedSearch',V
-Plug 'majutsushi/tagbar',V
-Plug 'arielrossanigo/dir-configs-override.vim',V
-,V
-asdjfsd = 9999,V
-aslfkdsd = alsjfsd,V
-aflssd = lsajf,V
-IDADE = input('Qual é a sua idade?\n'),V
-set background=dark,V
+call plug#begin(),V
+Plug 'kris2k/vim-pathogen',V
+Plug 'klen/python-mode',V
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' },V
+Plug 'ajh17/vimcompletesme',V
+Plug 'stephpy/vim-yaml',V
+Plug 'pearofducks/ansible-vim',V
+Plug 'chase/vim-ansible-yaml',V
+Plug 'docker/docker',V
+Plug 'ekalinin/dockerfile.vim',V
+Plug 'pld-linux/vim-syntax-vcl',V
+Plug 'vivien/vim-linux-coding-style',V
+Plug 'pangloss/vim-javascript',V
+Plug 'myhere/vim-nodejs-complete',V
+Plug 'kovisoft/slimv',V
+Plug 'morhetz/gruvbox',V
+Plug 'terryma/vim-multiple-cursors',V
 Plug 'scrooloose/nerdtree',V
+Plug 'Xuyuanp/nerdtree-git-plugin',V
+Plug 'airblade/vim-gitgutter',V
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight',V
+Plug 'ryanoasis/vim-devicons',V
+Plug 'ctrlpvim/ctrlp.vim' " fuzzy find files,V
+Plug 'preservim/nerdcommenter',V
+Plug 'christoomey/vim-tmux-navigator',V
+Plug 'HerringtonDarkholme/yats.vim' " TS Syntax,V
+Plug 'mattn/webapi-vim',V
+Plug 'mattn/gist-vim',V
+Plug 'sheerun/vim-polyglot',V
+Plug 'ncm2/ncm2',V
+Plug 'roxma/nvim-yarp',V
+Plug 'w0rp/ale',V
+Plug 'jiangmiao/auto-pairs',V
+Plug 'SirVer/ultisnips',V
+call plug#end(),V
+,V
+" Initial commands,V
+filetype plugin on,V
+" Pathogen load,V
+filetype off,V
+call pathogen#infect(),V
+call pathogen#helptags(),V
+filetype plugin indent on,V
+syntax on,V
+" colorscheme gruvbox,V
+" set background=dark,V
+set nobackup nowritebackup,V
+set smarttab,V
+set tabstop=2,V
+set shiftwidth=2,V
+set expandtab,V
+set hidden,V
+set number,V
+set relativenumber,V
+set inccommand=split,V
+set autoindent,V
+set splitright,V
+set termguicolors,V
+set mouse=a,V
+set noswapfile,V
+confirm,V
+autocmd FileType vim let b:vcm_tab_complete = 'vim',V
+autocmd FileType js let b:vcm_tab_complete = 'javascript',V
+" ==============================================,V
+" End Fisa-vim-config,V
+endif,V
+  execute "source " . custom_configs_path,V
+if filereadable(expand(custom_configs_path)),V
+    let custom_configs_path = "~/.vim/custom.vim",V
+else,V
+    let custom_configs_path = "~/.config/nvim/custom.vim",V
+if using_neovim,V
+" Include user's custom nvim configurations,V
+" Custom configurations ----------------,V
+    let g:webdevicons_enable = 0,V
+    let g:airline_symbols.linenr = '⭡',V
+    let g:airline_symbols.readonly = '⭤',V
+    let g:airline_symbols.branch = '⭠',V
+    let g:airline_right_alt_sep = '',V
+    let g:airline_right_sep = '',V
+    let g:airline_left_alt_sep = '',V
+    let g:airline_left_sep = '',V
+    endif,V
+       let g:airline_symbols = {},V
+    if !exists('g:airline_symbols'),V
+    " custom airline symbols,V
+    let g:webdevicons_enable = 1,V
+if fancy_symbols_enabled,V
+" Fancy Symbols!!,V
+let g:airline#extensions#whitespace#enabled = 0,V
+let g:airline_theme = 'bubblegum',V
+let g:airline_powerline_fonts = 0,V
+" Airline ------------------------------,V
+    let g:yankring_history_dir = '~/.vim/dirs/',V
+    let g:yankring_clipboard_monitor = 0,V
+    " copied in clipboard,V
+    " Fix for yankring and neovim problem when system has non-text things,V
+    let g:yankring_history_dir = '~/.config/nvim/',V
