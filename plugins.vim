@@ -116,6 +116,8 @@ Plug 'w0rp/ale'
 Plug 'jiangmiao/auto-pairs'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'thaerkh/vim-indentguides'
+Plug 'chiel92/vim-autoformat'
 call plug#end()
 
 " ============================================================================
