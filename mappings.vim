@@ -1,13 +1,22 @@
 let mapleader="\<space>"
 inoremap <c-j><c-k> <esc>
 
-" Run Python file with python3
-" map <Leader>x :call VimuxPromptCommand("clear; python3 " . bufname("%"))<cr><cr>:TmuxNavigateDown<cr>
+" Autoformat
+noremap <leader>f :Autoformat<cr>
+" Select in insert mode
+inoremap <c-e> <esc>v$
+inoremap <c-i> <esc>v0
+inoremap <c-v> <esc>v<Right>
+
+" Run file with pre-established interpreter or compiler in run.vim
 map <Leader>x :call RunCode()<cr><cr>:TmuxNavigateDown<cr>
 
-" Window movements shortcuts
+" Run test with pre-established interpreter or compiler in test.vim
+map <Leader>t :call RunTest()<cr><cr>
+
+" " Window movements shortcuts
 map <C-h> :call WinMove('h')<cr>
-map <C-j> :call WinMove('j')<cr>
+" map <C-j> :call WinMove('j')<cr>
 map <C-k> :call WinMove('k')<cr>
 map <C-l> :call WinMove('l')<cr>
 
@@ -26,9 +35,11 @@ inoremap <c-o> <esc>o
 " NERDTree 
 inoremap <c-space> <c-x><c-f>
 " Use <c-space> to trigger completion.
-map <C-b> :NERDTreeToggle<CR>
+" map <C-b> :NERDTreeToggle<CR>
+map <leader>/ :NERDTreeToggle<CR>
 nmap  <Plug>NERDCommenterToggle
 vmap  <Plug>NERDCommenterToggle
+" noremap <c-\> 0i'''<space>
 
 nmap <leader>; A;<esc>
 nmap qq :q<cr>
