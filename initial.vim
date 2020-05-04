@@ -14,6 +14,7 @@ autocmd FileType javascript let b:vcm_tab_complete = 'javascript'
 " autocmd FileType py let b:vcm_tab_complete = 'python'
 autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
 
+set wrap
 set encoding=utf-8
 set termguicolors
 set background=dark
@@ -49,7 +50,8 @@ set wildmode=list:longest
 
 " fix problems with uncommon shells (fish, xonsh) and plugins running commands
 " (neomake, ...)
-set shell=/bin/bash
+" set shell=/bin/bash
+set shell=/bin/zsh
 
 " Ability to add python breakpoints
 " (I use ipdb, but you can change it to whatever tool you use for debugging)
@@ -71,7 +73,19 @@ let g:tagbar_autofocus = 1
 
 " NERDTree -----------------------------
 
-" toggle nerdtree display
+" let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_open_on_gui_startup = 1
+" let g:nerdtree_tabs_no_startup_for_diff = 1
+" let g:nerdtree_tabs_smart_startup_focus = 1
+" let g:nerdtree_tabs_open_on_new_tab = 1
+" let g:nerdtree_tabs_meaningful_tab_names = 1
+" let g:nerdtree_tabs_autoclose = 0
+" let g:nerdtree_tabs_synchronize_view = 1
+" let g:nerdtree_tabs_synchronize_focus = 1
+" let g:nerdtree_tabs_focus_on_files = 0
+" let g:nerdtree_tabs_startup_cd = 1
+" let g:nerdtree_tabs_autofind = 1
+
 map <F3> :NERDTreeToggle<CR>
 " open nerdtree with the current file selected
 nmap ,t :NERDTreeFind<CR>
@@ -217,6 +231,9 @@ let g:tmuxcomplete#asyncomplete_source_options = {
       \ }
 let g:UltiSnipsEditSplit = 'vertical'
 let g:UltiSnipsSnippetDir = '~/.config/nvim/UltiSnippets'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-i>"
+let g:UltiSnipsJumpBackwardTrigger="<c-u>"
 let g:python3_host_prog = '/usr/bin/python3'
 let g:NERDTreeGitStatusWithFlags = 1
 "leit g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -239,6 +256,7 @@ let g:NERDSpaceDelims = 1
 " vim-prettier
 let g:prettier#quickfix_enabled = 0
 let g:prettier#quickfix_auto_focus = 0
+let g:prettier#autoformat_require_pragma = 0
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']

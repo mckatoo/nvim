@@ -1,8 +1,16 @@
 let mapleader="\<space>"
 inoremap <c-j><c-k> <esc>
 
+" Autosort imports
+map <leader>i :Isort<cr>
+
 " Autoformat
 noremap <leader>f :Autoformat<cr>
+
+" Wrap
+inoremap <c-w> <esc>vgq
+map <c-w> <esc>vgq
+
 " Select in insert mode
 inoremap <c-e> <esc>v$
 inoremap <c-i> <esc>v0
@@ -23,8 +31,10 @@ map <C-l> :call WinMove('l')<cr>
 " tab navigation mappings
 map tt :tabnew 
 map <c-Right> :tabn<CR>
+noremap tl :tabn<CR>
 imap <c-Right> <ESC>:tabn<CR>
 map <c-Left> :tabp<CR>
+noremap tj :tabp<CR>
 imap <c-Left> <ESC>:tabp<CR>
 
 " j/k will move virtual lines (lines that wrap)
