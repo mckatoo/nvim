@@ -30,12 +30,12 @@ map <C-l> :call WinMove('l')<cr>
 
 " tab navigation mappings
 map tt :tabnew 
-map <c-Right> :tabn<CR>
-noremap tl :tabn<CR>
-imap <c-Right> <ESC>:tabn<CR>
-map <c-Left> :tabp<CR>
-noremap tj :tabp<CR>
-imap <c-Left> <ESC>:tabp<CR>
+" map <c-Right> :tabn<CR>
+noremap tn :tabn<CR>
+" imap <c-Right> <ESC>:tabn<CR>
+" map <c-Left> :tabp<CR>
+noremap tp :tabp<CR>
+" imap <c-Left> <ESC>:tabp<CR>
 
 " j/k will move virtual lines (lines that wrap)
 noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')

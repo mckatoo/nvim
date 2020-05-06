@@ -110,9 +110,9 @@ let NERDTreeNodeDelimiter = "\x07"
 
 " Autorefresh on tree focus
 function! NERDTreeRefresh()
-    if &filetype == "nerdtree"
-        silent exe substitute(mapcheck("R"), "<CR>", "", "")
-    endif
+  if &filetype == "nerdtree"
+    silent exe substitute(mapcheck("R"), "<CR>", "", "")
+  endif
 endfunction
 
 autocmd BufEnter * call NERDTreeRefresh()
@@ -143,10 +143,10 @@ let g:neomake_virtualtext_current_error = 0
 " let g:deoplete#enable_ignore_case = 1
 " let g:deoplete#enable_smart_case = 1
 call deoplete#custom#option({
-\ 'auto_complete_delay': 200,
-\ 'smart_case': v:true,
-\ 'enable_at_startup': v:true,
-\ })
+      \ 'auto_complete_delay': 200,
+      \ 'smart_case': v:true,
+      \ 'enable_at_startup': v:true,
+      \ })
 " complete with words from any opened file
 let g:context_filetype#same_filetypes = {}
 let g:context_filetype#same_filetypes._ = '_'
@@ -169,7 +169,7 @@ nmap ,D :tab split<CR>:call jedi#goto()<CR>
 " Ack.vim ------------------------------
 
 " mappings
-nmap ,r :Ack 
+nmap ,r :Ack
 nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
 
 " Window Chooser ------------------------------
@@ -234,25 +234,33 @@ let g:tmuxcomplete#asyncomplete_source_options = {
       \     'truncate':        0
       \     }
       \ }
+set runtimepath+=~/.config/nvim/plugged/vim-snippets
 let g:UltiSnipsEditSplit = 'vertical'
-let g:UltiSnipsSnippetDir = '~/.config/nvim/UltiSnippets'
+" let g:UltiSnipsSnippetDir = '~/.config/nvim/UltiSnippets'
+let g:UltiSnipsSnippetDirectories = [
+      \ $HOME.'/.config/nvim/UltiSnips',
+      \ $HOME.'/.config/nvim/UltiSnippets',
+      \ $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips'
+      \]
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-i>"
 let g:UltiSnipsJumpBackwardTrigger="<c-u>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:python3_host_prog = '/usr/bin/python3'
 let g:NERDTreeGitStatusWithFlags = 1
-"leit g:WebDevIconsUnicodeDecorateFolderNodes = 1
-"let g:NERDTreeGitStatusNodeColorization = 1
-"let g:NERDTreeColorMapCustom = {
-"\ "Staged"    : "#0ee375",  
-"\ "Modified"  : "#d9bf91",  
-"\ "Renamed"   : "#51C9FC",  
-"\ "Untracked" : "#FCE77C",  
-"\ "Unmerged"  : "#FC51E6",  
-"\ "Dirty"     : "#FFBD61",  
-"\ "Clean"     : "#87939A",   
-"\ "Ignored"   : "#808080"   
-"\ }                         
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:NERDTreeGitStatusNodeColorization = 1
+let g:NERDTreeColorMapCustom = {
+      \ "Staged"    : "#0ee375",
+      \ "Modified"  : "#d9bf91",
+      \ "Renamed"   : "#51C9FC",
+      \ "Untracked" : "#FCE77C",
+      \ "Unmerged"  : "#FC51E6",
+      \ "Dirty"     : "#FFBD61",
+      \ "Clean"     : "#87939A",
+      \ "Ignored"   : "#808080"
+      \ }
 
 let g:NERDTreeIgnore = ['^node_modules$']
 
