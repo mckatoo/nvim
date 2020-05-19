@@ -20,6 +20,8 @@ endif
 
 " Plugins
 call plug#begin("~/.config/nvim/plugged")
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'mxw/vim-jsx'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'skywind3000/asyncrun.vim'
 Plug 'benmills/vimux'
@@ -70,8 +72,9 @@ Plug 'myusuf3/numbers.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'airblade/vim-gitgutter'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'airblade/vim-gitgutter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdcommenter'
@@ -89,6 +92,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'thaerkh/vim-indentguides'
 Plug 'chiel92/vim-autoformat'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 call plug#end()
 
 " ============================================================================

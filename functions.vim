@@ -11,7 +11,11 @@ function! WinMove(key)
     exec "wincmd ".a:key
   endif
 endfunction
-
+function! EslintFix()
+  if (&ft=='javascript')
+    :CocCommand eslint.executeAutofix
+  endif
+endfunction
 " ====================================================
 " Compile or Run file
 let custom_run_path = "~/.config/nvim/run.vim"
