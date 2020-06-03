@@ -93,6 +93,7 @@ Plug 'honza/vim-snippets'
 Plug 'thaerkh/vim-indentguides'
 Plug 'chiel92/vim-autoformat'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'pantharshit00/vim-prisma'
 call plug#end()
 
 " ============================================================================
