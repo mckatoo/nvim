@@ -57,8 +57,23 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 inoremap <c-o> <esc>o
 
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+" coc complete
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" use <c-space>for trigger completion
+inoremap <silent><expr> <c-space> coc#refresh()
+
 " NERDTree
-inoremap <c-space> <c-x><c-f>
+" inoremap <c-space> <c-x><c-f>
 " Use <c-space> to trigger completion.
 " map <C-b> :NERDTreeToggle<CR>
 " map <leader>/ :NERDTreeToggle<CR>
