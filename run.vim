@@ -4,16 +4,27 @@ function! RunCode()
   if (t:ext == 'py')
     return RunPython()
   endif
-  if (t:ext == 'js')
+  if t:ext=='js' || t:ext=='json'
     return RunNode()
   endif
 endfunction
 
+" ===================================
+
 function! RunPython()
-  return VimuxPromptCommand("clear; python3 " . bufname("%"))
+  call VimuxCloseRunner()
+  return VimuxRunCommand("clear; python3 " . bufname("%"))
 endfunction
 
 function! RunNode()
-  call VimuxPromptCommand("clear; node " . bufname("%"))
+  call VimuxCloseRunner()
+  call VimuxRunCommand("npm run dev")
 endfunction
 
+function! RunLiveServer()
+  call VimuxRunCommand("light-server -s . -w '**/*.js, **/*.html' -o")
+endfunction
+
+function! OpenTerm()
+  call VimuxPromptCommand("clear")
+endfunction

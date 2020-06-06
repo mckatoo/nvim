@@ -10,10 +10,13 @@ filetype plugin indent on
 syntax on
 
 autocmd FileType vim let b:vcm_tab_complete = 'vim'
-autocmd FileType javascript let b:vcm_tab_complete = 'javascript'
-" autocmd FileType py let b:vcm_tab_complete = 'python'
+autocmd FileType py let b:vcm_tab_complete = 'python'
 autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab
+autocmd BufNewFile,BufRead *.js set syntax=javascript ft=javascript
+autocmd BufNewFile,BufRead *.cjs set syntax=javascript ft=javascript
+autocmd BufNewFile,BufRead *.mjs set syntax=javascript ft=javascript
 
+set wrap
 set encoding=utf-8
 set termguicolors
 set background=dark
@@ -33,8 +36,16 @@ set splitright
 set termguicolors
 set mouse=a
 set noswapfile
-" set fillchars+=vert:\
+set conceallevel=0
 confirm
+
+let g:javascript_plugin_jsdoc = 1
+let g:javascript_plugin_ngdoc = 1
+let g:javascript_plugin_flow = 1
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
 
 " needed so deoplete can auto select the first suggestion
 set completeopt+=noinsert
@@ -49,7 +60,8 @@ set wildmode=list:longest
 
 " fix problems with uncommon shells (fish, xonsh) and plugins running commands
 " (neomake, ...)
-set shell=/bin/bash
+" set shell=/bin/bash
+set shell=/bin/zsh
 
 " Ability to add python breakpoints
 " (I use ipdb, but you can change it to whatever tool you use for debugging)
@@ -71,10 +83,25 @@ let g:tagbar_autofocus = 1
 
 " NERDTree -----------------------------
 
-" toggle nerdtree display
+let g:nerdtree_tabs_open_on_console_startup=2
+let g:nerdtree_tabs_smart_startup_focus=2
+let g:nerdtree_tabs_open_on_new_tab=1
+let g:nerdtree_tabs_meaningful_tab_names=1
+let g:nerdtree_tabs_autoclose=1
+let g:nerdtree_tabs_synchronize_view=1
+let g:nerdtree_tabs_synchronize_focus=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:nerdtree_tabs_startup_cd=1
+let g:nerdtree_tabs_autofind=0
+let g:NERDTreeWinSize=40
+let g:Tlist_WinWidth=40
+let NERDTreeCustomOpenArgs={'file':{'where': 't'}}
+
 map <F3> :NERDTreeToggle<CR>
 " open nerdtree with the current file selected
 nmap ,t :NERDTreeFind<CR>
+" show hidden files
+let NERDTreeShowHidden=1
 " don;t show these file types
 let NERDTreeIgnore = ['\.pyc$', '\.pyo$']
 
@@ -94,9 +121,9 @@ let NERDTreeNodeDelimiter = "\x07"
 
 " Autorefresh on tree focus
 function! NERDTreeRefresh()
-    if &filetype == "nerdtree"
-        silent exe substitute(mapcheck("R"), "<CR>", "", "")
-    endif
+  if &filetype == "nerdtree"
+    silent exe substitute(mapcheck("R"), "<CR>", "", "")
+  endif
 endfunction
 
 autocmd BufEnter * call NERDTreeRefresh()
@@ -127,6 +154,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 call deoplete#custom#option('enable_smart_case', 1)
 " let g:deoplete#enable_smart_case = 1
+
 " complete with words from any opened file
 let g:context_filetype#same_filetypes = {}
 let g:context_filetype#same_filetypes._ = '_'
@@ -149,7 +177,7 @@ nmap ,D :tab split<CR>:call jedi#goto()<CR>
 " Ack.vim ------------------------------
 
 " mappings
-nmap ,r :Ack 
+nmap ,r :Ack
 nmap ,wr :execute ":Ack " . expand('<cword>')<CR>
 
 " Window Chooser ------------------------------
@@ -196,8 +224,8 @@ let g:airline_theme = 'bubblegum'
 let g:airline#extensions#whitespace#enabled = 0
 
 " open NERDTree automatically
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 " Others configurations
 let g:pymode_lint_signs = 1
@@ -214,22 +242,37 @@ let g:tmuxcomplete#asyncomplete_source_options = {
       \     'truncate':        0
       \     }
       \ }
+set runtimepath+=~/.config/nvim/plugged/vim-snippets
 let g:UltiSnipsEditSplit = 'vertical'
-let g:UltiSnipsSnippetDir = '~/.config/nvim/UltiSnippets'
+" let g:UltiSnipsSnippetDir = '~/.config/nvim/UltiSnippets'
+let g:UltiSnipsSnippetDirectories = [
+      \ $HOME.'/.config/nvim/UltiSnips',
+      \ $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips'
+      \]
+" let g:UltiSnipsSnippetDirectories = [
+      " \ $HOME.'/.config/nvim/UltiSnips',
+      " \ $HOME.'/.config/nvim/UltiSnippets',
+      " \ $HOME.'/.config/nvim/plugged/vim-snippets/UltiSnips'
+      " \]
+let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-i>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-u>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:python3_host_prog = '/usr/bin/python3'
 let g:NERDTreeGitStatusWithFlags = 1
-"leit g:WebDevIconsUnicodeDecorateFolderNodes = 1
-"let g:NERDTreeGitStatusNodeColorization = 1
-"let g:NERDTreeColorMapCustom = {
-"\ "Staged"    : "#0ee375",  
-"\ "Modified"  : "#d9bf91",  
-"\ "Renamed"   : "#51C9FC",  
-"\ "Untracked" : "#FCE77C",  
-"\ "Unmerged"  : "#FC51E6",  
-"\ "Dirty"     : "#FFBD61",  
-"\ "Clean"     : "#87939A",   
-"\ "Ignored"   : "#808080"   
-"\ }                         
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:NERDTreeGitStatusNodeColorization = 1
+let g:NERDTreeColorMapCustom = {
+      \ "Staged"    : "#0ee375",
+      \ "Modified"  : "#d9bf91",
+      \ "Renamed"   : "#51C9FC",
+      \ "Untracked" : "#FCE77C",
+      \ "Unmerged"  : "#FC51E6",
+      \ "Dirty"     : "#FFBD61",
+      \ "Clean"     : "#87939A",
+      \ "Ignored"   : "#808080"
+      \ }
 
 let g:NERDTreeIgnore = ['^node_modules$']
 
@@ -238,6 +281,7 @@ let g:NERDSpaceDelims = 1
 " vim-prettier
 let g:prettier#quickfix_enabled = 0
 let g:prettier#quickfix_auto_focus = 0
+let g:prettier#autoformat_require_pragma = 0
 
 " ctrlp
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']

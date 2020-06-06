@@ -1,0 +1,45 @@
+snippet conlog "console.log()" b
+console.log( ${1:String} )
+endsnippet
+
+snippet for "for with let" b
+for (let i = 0; i < ${1}; i++) {
+	${1}[i] = ${2};
+}
+endsnippet
+
+snippet forin "for in with work on array index and objets" b
+for (let ${1:Element} in ${2:Array or Object}) {
+	console.log($1)
+	$3
+}
+endsnippet
+
+snippet forof "for in with work on array" b
+for (let ${1:Element} of ${2:Array}) {
+	console.log($1)
+	$3
+}
+endsnippet
+
+snippet import "Import modules es2008 or most" b
+import ${2:Name of function} from '${1:Name of module}'
+endsnippet
+
+snippet template_string "`${}`"
+\`${1:String}\$\{${2:Code}\}${3:String}\`
+endsnippet
+
+snippet namedArrowFunction "Named arrow function"
+const ${1:Name of function} = ( ${2:Var} ) => {
+  ${3:Body of function}
+}
+
+endsnippet
+
+snippet anonArrowFunction "Anonymous arrow function"
+( $1 ) => {
+  ${2:Body of function}
+}
+
+endsnippet
