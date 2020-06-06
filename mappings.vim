@@ -88,6 +88,7 @@ nmap <leader>st :source-file ~/.tmux.conf<cr>
 nmap <s-f> :let @/="<C-r><C-w>"<CR>
 nmap <leader>pi :PlugInstall<cr>
 nmap <leader>pu :PlugUpdate<cr>
+nmap <leader>pc :PlugClean<cr>
 
 inoremap <c-h> <Left>
 inoremap <c-j> <Down>
